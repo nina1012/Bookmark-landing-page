@@ -1,6 +1,10 @@
 .buttons {
   display: flex;
   justify-content: space-between;
+
+  @include respond(tablet) {
+    max-width: 31rem;
+  }
 }
 .btn {
   padding: 1.3rem 1.8rem;

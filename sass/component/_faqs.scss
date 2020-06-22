@@ -16,6 +16,7 @@
 
     &:hover {
       cursor: pointer;
+      color: var(--soft-red);
     }
   }
   :not(.question:nth-of-type(1)),
