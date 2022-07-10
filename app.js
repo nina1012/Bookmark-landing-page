@@ -1,5 +1,32 @@
+// ******** Nav menu
+
+const openBtn = document.querySelector('#openBtn');
+const closeBtn = document.querySelector('#closeBtn');
+const headerImage = document.querySelector('#header-image');
+const modalLinks = document.querySelectorAll('.header__modal-body__links');
+const modal = document.querySelector('#modal');
+
+openBtn.onclick = () => {
+  modal.classList.remove('hidden');
+  openBtn.classList.add('hidden');
+  headerImage.style.visibility= 'hidden';
+}
+
+closeBtn.onclick = () => {
+  modal.classList.add('hidden');
+  openBtn.classList.remove('hidden');
+  headerImage.style.visibility= 'visible';
+}
+
+for (var i = 0; i < modalLinks.length; i++) {
+  modalLinks[i].onclick = () => {
+    modal.classList.add('hidden');
+    openBtn.classList.remove('hidden');
+    headerImage.style.visibility= 'visible';
+  }
+}
+
 const footerList = document.querySelector('.footer');
-const toggleButton = document.querySelector('.toggle');
 const faqs = document.querySelector('.faqs');
 const answers = document.querySelectorAll('.answer');
 const options = document.querySelector('.options');
@@ -99,25 +126,3 @@ x.addListener(changeCardsTopPosition); // Attach listener function on state chan
 
 answers.forEach(answer => answer.classList.toggle('hide'));
 // answers[1].classList.add('show');
-
-// ******* HANDLING TOGGLE BUTTON WHEN SCREENS ARE NARROWER
-// setting properties to footer links when clicking on toggle button
-toggleButton.addEventListener('click', e => {
-  const propertiesFooter = {
-    width: '100%',
-    height: '100vh',
-    top: 0,
-    position: 'absolute',
-    zIndex: 100,
-    backgroundColor: 'rgba(36, 43, 70, 0.3)'
-  };
-  const toggleBtn = document.querySelector('.toggle-btn');
-  toggleProperty('src', './images/icon-close.svg', toggleBtn);
-  for (let prop in propertiesFooter) {
-    toggleProperty(prop, propertiesFooter[prop], footerList);
-  }
-});
-
-function toggleProperty(property, value, node) {
-  node.style.setProperty(property, value);
-}
